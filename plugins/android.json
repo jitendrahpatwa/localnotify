@@ -27,6 +27,12 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.stuffs916098"
+        },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "com.ionicframework.stuffs916098"
+        },
+        "cordova-plugin-sms": {
+            "PACKAGE_NAME": "com.ionicframework.stuffs916098"
         }
     },
     "dependent_plugins": {
