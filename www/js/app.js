@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,bgserv,$cordovaLocalNotification) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,20 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    cordova.plugins.backgroundMode.setEnabled(true);
+    cordova.plugins.backgroundMode.isActive();
+    cordova.plugins.backgroundMode.on('enable', function(){
+      $cordovaLocalNotification.schedule({
+            id: 1,
+            title: 'Lets see it in bg notification',
+            text: 'Youre sooooo sexy!',
+            data: {
+              customProperty: 'custom value'
+            }
+          }).then(function (result) {
+            console.log('Notification 1 triggered');
+          });
+    });
   });
 })
 
@@ -70,4 +84,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
+})
+
+.factory("bgserv",function(){
+  return {
+    callbg:function($cordovaLocalNotification){
+      console.log("called from bg");
+    }
+  }
 });
