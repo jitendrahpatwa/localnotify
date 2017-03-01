@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     }
     cordova.plugins.backgroundMode.setEnabled(true);
     cordova.plugins.backgroundMode.isActive();
-    cordova.plugins.backgroundMode.on('enable', function(){
+    /*cordova.plugins.backgroundMode.on('enable', function(){
       var i = 1;
       $interval(function(){
         $cordovaLocalNotification.schedule({
@@ -35,8 +35,22 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
             console.log('Notification 1 triggered');
           });
       },10000);
+    });*///worked on pause
+
+    //define alert for notification for bg alert
+    cordova.plugins.backgroundMode.setDefaults({
+        title: "Stuff required to do in background",
+        text: "Please be calm its so safe!",
+        //icon: 'icon' // this will look for icon.png in platforms/android/res/drawable|mipmap
+        color: "#b3b3b3" // hex format like 'F14F4D'
+        //resume: Boolean,
+        //hidden: Boolean,
+        //bigText: Boolean
     });
+    
+
     cordova.plugins.backgroundMode.on('activate', function(){
+      cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
       var j= 1;
       $interval(function(){
       $cordovaLocalNotification.schedule({
@@ -51,6 +65,56 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
           });
       },6000);
     });
+    cordova.plugins.backgroundMode.overrideBackButton();
+
+    cordova.plugins.backgroundMode.un('activate', function(){
+      var j= 1;
+      $interval(function(){
+      $cordovaLocalNotification.schedule({
+            id: 7,
+            title: 'Lets see it in unactivate bg notification',
+            text: (j++)+'Ohhhh! unactivate',
+            data: {
+              customProperty: 'custom value'
+            }
+          }).then(function (result) {
+            console.log('Notification 1 triggered');
+          });
+      },8000);
+    });
+
+    cordova.plugins.backgroundMode.on('deactivate', function(){
+      var j= 1;
+      $interval(function(){
+      $cordovaLocalNotification.schedule({
+            id: 8,
+            title: 'Lets see it in deactivate bg notification',
+            text: (j++)+'Youre sooooo sexy deactivate!',
+            data: {
+              customProperty: 'custom value'
+            }
+          }).then(function (result) {
+            console.log('Notification 1 triggered');
+          });
+      },9000);
+    });
+
+    cordova.plugins.backgroundMode.un('deactivate', function(){
+      var j= 1;
+      $interval(function(){
+      $cordovaLocalNotification.schedule({
+            id: 8,
+            title: 'Lets see it in deactivate bg notification',
+            text: (j++)+'undeactivate!',
+            data: {
+              customProperty: 'custom value'
+            }
+          }).then(function (result) {
+            console.log('Notification 1 triggered');
+          });
+      },10000);
+    });    
+
   });
 })
 
