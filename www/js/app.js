@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 
-.run(function($ionicPlatform,bgserv,$cordovaLocalNotification) {
+.run(function($ionicPlatform,bgserv,$cordovaLocalNotification,$interval) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,16 +22,34 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     cordova.plugins.backgroundMode.setEnabled(true);
     cordova.plugins.backgroundMode.isActive();
     cordova.plugins.backgroundMode.on('enable', function(){
-      $cordovaLocalNotification.schedule({
-            id: 1,
+      var i = 1;
+      $interval(function(){
+        $cordovaLocalNotification.schedule({
+            id: 5,
             title: 'Lets see it in bg notification',
-            text: 'Youre sooooo sexy!',
+            text: 'Youre sooooo sexy!'+(i++),
             data: {
               customProperty: 'custom value'
             }
           }).then(function (result) {
             console.log('Notification 1 triggered');
           });
+      },10000);
+    });
+    cordova.plugins.backgroundMode.on('activate', function(){
+      var j= 1;
+      $interval(function(){
+      $cordovaLocalNotification.schedule({
+            id: 6,
+            title: 'Lets see it in activate bg notification',
+            text: (j++)+'Youre sooooo sexy activate!',
+            data: {
+              customProperty: 'custom value'
+            }
+          }).then(function (result) {
+            console.log('Notification 1 triggered');
+          });
+      },6000);
     });
   });
 })
