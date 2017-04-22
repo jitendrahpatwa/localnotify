@@ -42,6 +42,41 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope,$cordovaLocalNotification, $ionicPlatform) {
+   var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
+    deviceInfo.get(function(result) {
+      //fetch the device data
+        alert("result deviceInfo = " + JSON.stringify(result));
+    }, function() {
+        alert("error deviceInfo");
+    }); 
+
+
+  document.addEventListener("deviceready", onDeviceReady, true);
+ 
+  function onDeviceReady() {
+    window.plugins.sim.getSimInfo(successCallback, errorCallback);
+  }
+   
+  function successCallback(result) {
+    alert(JSON.stringify(result));
+  }
+   
+  function errorCallback(error) {
+    alert(JSON.stringify(error));
+  }
+   
+  // Android only: check permission 
+  function hasReadPermission() {
+    window.plugins.sim.hasReadPermission(successCallback, errorCallback);
+  }
+   
+  // Android only: request permission 
+  function requestReadPermission() {
+    window.plugins.sim.requestReadPermission(successCallback, errorCallback);
+  }
+
+
+
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
