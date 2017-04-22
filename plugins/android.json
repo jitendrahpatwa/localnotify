@@ -33,10 +33,16 @@
         },
         "cordova-plugin-sms": {
             "PACKAGE_NAME": "com.ionicframework.stuffs916098"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.stuffs916098"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ionicframework.stuffs916098"
+        },
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.stuffs916098"
         }
     }
