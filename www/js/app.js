@@ -21,6 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     }
     cordova.plugins.backgroundMode.setEnabled(true);
     cordova.plugins.backgroundMode.isActive();
+  });
     /*cordova.plugins.backgroundMode.on('enable', function(){
       var i = 1;
       $interval(function(){

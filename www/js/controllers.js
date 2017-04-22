@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$cordovaLocalNotification, $ionicPlatform) {
+.controller('PlaylistsCtrl', function($scope,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform) {
    /*var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
     deviceInfo.get(function(result) {
       //fetch the device data
@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
     });*/ 
 
 
-  document.addEventListener("deviceready", onDeviceReady, true);
+  /*document.addEventListener("deviceready", onDeviceReady, true);
   onDeviceReady();
   function onDeviceReady() {
     window.plugins.sim.getSimInfo(successCallback, errorCallback);
@@ -73,9 +73,24 @@ angular.module('starter.controllers', [])
   // Android only: request permission 
   function requestReadPermission() {
     window.plugins.sim.requestReadPermission(successCallback, errorCallback);
+  }*/
+  $scope.nos = {
+    'tel':''
+  };
+  $scope.sendtow = function(){
+    var n = $scope.nos.tel;
+    alert(n);
+    var msg = "hi "+n;
+    $cordovaSocialSharing
+    .shareViaWhatsAppToReceiver(n,msg, null, "mydomain.com")
+    //.shareViaWhatsApp(n,msg,null,"mydomain.com")
+    .then(function(result) {
+      alert("android>"+result);
+    }, function(err) {
+      alert("errandroid>"+err);
+      // An error occurred. Show a message to the user
+    });
   }
-
-
 
   $scope.playlists = [
     { title: 'Reggae', id: 1 },

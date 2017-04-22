@@ -1,6 +1,14 @@
 <ion-view view-title="Playlists">
   <ion-content>
-  	<button class="button button-full button-positive" ng-click="scheduleSingleNotification()">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Number</span>
+      <input type="text" placeholder="Number" ng-model="nos.tel">
+    </label>
+  	<button class="button button-full button-assertive" ng-click="sendtow()">
+          Send To Whatsapp Contact Number
+        </button>   
+        <br><br>
+    <button class="button button-full button-positive" ng-click="scheduleSingleNotification()">
           Show Local Notification (1)
         </button>   
         <button class="button button-full button-positive" ng-click="scheduleDelayedNotification()">
