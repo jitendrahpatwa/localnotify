@@ -91,6 +91,11 @@ angular.module('starter.controllers', [])
       // An error occurred. Show a message to the user
     });
   }
+  $scope.sendtow2 = function(){
+    var n = $scope.nos.tel;
+    alert(n);
+    cordova.plugins.Whatsapp.send(n);
+  }
 
   $scope.playlists = [
     { title: 'Reggae', id: 1 },

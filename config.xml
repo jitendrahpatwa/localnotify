@@ -46,4 +46,5 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
     <plugin name="cordova-plugin-sim" spec="~1.3.3" />
     <plugin name="com.vliesaputra.deviceinformation" spec="https://github.com/vliesaputra/DeviceInformationPlugin" />
+    <plugin name="mobi.moica.whatsapp" spec="https://github.com/ranjitpandit/whatsapp-phonegap-plugin.git" />
 </widget>

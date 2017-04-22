@@ -45,6 +45,9 @@
         },
         "com.vliesaputra.deviceinformation": {
             "PACKAGE_NAME": "com.ionicframework.stuffs916098"
+        },
+        "mobi.moica.whatsapp": {
+            "PACKAGE_NAME": "com.ionicframework.stuffs916098"
         }
     },
     "dependent_plugins": {
