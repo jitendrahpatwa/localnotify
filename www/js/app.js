@@ -38,7 +38,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     });*///worked on pause
 
     //define alert for notification for bg alert
-    cordova.plugins.backgroundMode.setDefaults({
+    /*cordova.plugins.backgroundMode.setDefaults({
         title: "Stuff required to do in background",
         text: "Please be calm its so safe!",
         //icon: 'icon' // this will look for icon.png in platforms/android/res/drawable|mipmap
@@ -115,7 +115,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       },10000);
     });    
 
-  });
+  });*/
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

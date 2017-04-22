@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
 
 
   document.addEventListener("deviceready", onDeviceReady, true);
- 
+  onDeviceReady();
   function onDeviceReady() {
     window.plugins.sim.getSimInfo(successCallback, errorCallback);
   }
