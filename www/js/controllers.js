@@ -42,13 +42,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope,$cordovaLocalNotification, $ionicPlatform) {
-   var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
+   /*var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
     deviceInfo.get(function(result) {
       //fetch the device data
         alert("result deviceInfo = " + JSON.stringify(result));
     }, function() {
         alert("error deviceInfo");
-    }); 
+    });*/ 
 
 
   document.addEventListener("deviceready", onDeviceReady, true);
