@@ -51,11 +51,11 @@ angular.module('starter.controllers', [])
     });*/ 
    var callcontact = function(){
     alert("in callcontact");
-    var opts = {                                           //search options
-      /*filter : searchTerm,                                 // 'Bob'*/
+    /*var opts = {                                           //search options
+      //filter : searchTerm,                                 // 'Bob'
       multiple: true,                                      // Yes, return any contact that matches criteria
       fields:  [ 'displayName', 'name' ]                   // These are the fields to search for 'bob'.
-/*      desiredFields: [id];    //return fields.*/
+      //desiredFields: [id];    //return fields.
     };
 
     if ($ionicPlatform.isAndroid()) {
@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
     $cordovaContacts.find(opts).then(function (contactsFound) {
       $scope.contacts = contactsFound;
       alert(JSON.stringify(contactsFound));
-    };
+    };*/
 
     /*$cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
       $scope.contacts = allContacts;
