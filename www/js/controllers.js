@@ -77,7 +77,7 @@ angular.module('starter.controllers', [])
   
   /////diagnostics
   /*Working*/
-  /*var checkAuthorization = function(){
+  var checkAuthorization = function(){
     cordova.plugins.diagnostic.isLocationAuthorized(function(authorized){
         alert("Location is " + (authorized ? "authorized" : "unauthorized"));
         if(authorized){
@@ -113,6 +113,15 @@ var checkDeviceSetting = function(){
         if(!enabled){
             cordova.plugins.locationAccuracy.request(function (success){
                 alert("Successfully requested high accuracy location mode: "+success.message);
+                cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
+                  if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
+                    alert("Contacts use is authorized");
+                  }else{
+                    alert("contact is not authorized");
+                  }
+                }, function(error){
+                    alert(error);
+                });
             }, function onRequestFailure(error){
                 alert("Accuracy request failed: error code="+error.code+"; error message="+error.message);
                 if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED){
@@ -143,10 +152,10 @@ var checkDeviceSetting = function(){
         localStorage.LocationAvailable = "No";
         alert("The following error occurred: "+error+" "+localStorage.LocationAvailable);
     });
-  },5000);*/
+  },5000);
 
   //cordova.plugins.diagnostic.isContactsAuthorized(successCallback, errorCallback);
-  cordova.plugins.diagnostic.isContactsAuthorized(function(authorized){
+  /*cordova.plugins.diagnostic.isContactsAuthorized(function(authorized){
       alert("App is " + (authorized ? "authorized" : "denied") + " access to contacts");
       cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
         if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
@@ -159,7 +168,7 @@ var checkDeviceSetting = function(){
       });
   }, function(error){
       alert("The following error occurred: "+error);
-  });
+  });*/
 /*Working*/
   /////
 

@@ -51,6 +51,9 @@
         },
         "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "com.ionicframework.stuffs916098"
+        },
+        "cordova-plugin-request-location-accuracy": {
+            "PACKAGE_NAME": "com.ionicframework.stuffs916098"
         }
     },
     "dependent_plugins": {
