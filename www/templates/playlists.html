@@ -1,5 +1,10 @@
 <ion-view view-title="Playlists">
   <ion-content>
+    <button class="button button-full button-calm" ng-click="callcontactscope()">
+          Call contacts
+        </button>   
+        <br>
+
     <label class="item item-input item-floating-label">
       <span class="input-label">Number</span>
       <input type="text" placeholder="Number" ng-model="nos.tel">
@@ -32,6 +37,6 @@
       </ion-item>
     </ion-list>
     <br>
-    <!-- <p>{{contacts | json }}</p> -->
+    <p>{{contactslist | json }}</p>
   </ion-content>
 </ion-view>

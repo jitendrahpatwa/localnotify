@@ -51,27 +51,27 @@ angular.module('starter.controllers', [])
     });*/ 
    var callcontact = function(){
     alert("in callcontact");
-    /*var opts = {                                           //search options
-      //filter : searchTerm,                                 // 'Bob'
-      multiple: true,                                      // Yes, return any contact that matches criteria
-      fields:  [ 'displayName', 'name' ]                   // These are the fields to search for 'bob'.
-      //desiredFields: [id];    //return fields.
-    };
-
-    if ($ionicPlatform.isAndroid()) {
-      opts.hasPhoneNumber = true;         //hasPhoneNumber only works for android.
-    };
-
-    $cordovaContacts.find(opts).then(function (contactsFound) {
-      $scope.contacts = contactsFound;
-      alert(JSON.stringify(contactsFound));
-    };*/
-
-    /*$cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
-      $scope.contacts = allContacts;
-      alert(JSON.stringify($scope.contacts));
-    };*/
+    
   };
+
+  function onSuccess(contacts) {
+      var result = contacts;
+      alert(result.length);
+      $scope.contactslist = JSON.stringify(result);
+      alert(JSON.stringify(result));
+  };
+  function onError(contactError) {
+      alert(contactError);
+  };
+  $scope.callcontactscope = function(){
+        var options = {};
+    options.multiple = true;
+    
+    $cordovaContacts.find(options).then(onSuccess, onError);
+  }
+  
+    
+
 
   /*document.addEventListener("deviceready", onDeviceReady, true);
   onDeviceReady();
