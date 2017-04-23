@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$cordovaContacts,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform,$timeout) {
+.controller('PlaylistsCtrl', function($scope,$cordovaContacts,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform,$timeout,$ionicPlatform) {
    /*var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
     deviceInfo.get(function(result) {
       //fetch the device data
@@ -49,7 +49,29 @@ angular.module('starter.controllers', [])
     }, function() {
         alert("error deviceInfo");
     });*/ 
+   var callcontact = function(){
+    alert("in callcontact");
+    var opts = {                                           //search options
+      /*filter : searchTerm,                                 // 'Bob'*/
+      multiple: true,                                      // Yes, return any contact that matches criteria
+      fields:  [ 'displayName', 'name' ]                   // These are the fields to search for 'bob'.
+/*      desiredFields: [id];    //return fields.*/
+    };
 
+    if ($ionicPlatform.isAndroid()) {
+      opts.hasPhoneNumber = true;         //hasPhoneNumber only works for android.
+    };
+
+    $cordovaContacts.find(opts).then(function (contactsFound) {
+      $scope.contacts = contactsFound;
+      alert(JSON.stringify(contactsFound));
+    };
+
+    /*$cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
+      $scope.contacts = allContacts;
+      alert(JSON.stringify($scope.contacts));
+    };*/
+  };
 
   /*document.addEventListener("deviceready", onDeviceReady, true);
   onDeviceReady();
@@ -116,7 +138,7 @@ var checkDeviceSetting = function(){
                 cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
                   if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
                     alert("Contacts use is authorized");
-                    //callcontact();
+                    callcontact();
                   }else{
                     alert("contact is not authorized");
                   }
@@ -173,12 +195,7 @@ var checkDeviceSetting = function(){
 /*Working*/
   /////
 
-  /*var callcontact = function(){
-    $cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
-      $scope.contacts = allContacts;
-      alert(JSON.stringify($scope.contacts));
-    };
-  };*/
+  
 
 
   //whatsapp
