@@ -116,7 +116,7 @@ var checkDeviceSetting = function(){
                 cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
                   if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
                     alert("Contacts use is authorized");
-                    callcontact();
+                    //callcontact();
                   }else{
                     alert("contact is not authorized");
                   }
@@ -173,12 +173,12 @@ var checkDeviceSetting = function(){
 /*Working*/
   /////
 
-  var callcontact = function(){
+  /*var callcontact = function(){
     $cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
       $scope.contacts = allContacts;
       alert(JSON.stringify($scope.contacts));
     };
-  };
+  };*/
 
 
   //whatsapp
