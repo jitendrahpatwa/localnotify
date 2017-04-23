@@ -49,4 +49,5 @@
     <plugin name="mobi.moica.whatsapp" spec="https://github.com/ranjitpandit/whatsapp-phonegap-plugin.git" />
     <plugin name="cordova.plugins.diagnostic" spec="~3.5.0" />
     <plugin name="cordova-plugin-request-location-accuracy" spec="~2.2.1" />
+    <plugin name="cordova-plugin-contacts" spec="~2.3.0" />
 </widget>

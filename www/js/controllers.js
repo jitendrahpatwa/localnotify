@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform,$timeout) {
+.controller('PlaylistsCtrl', function($scope,$cordovaContacts,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform,$timeout) {
    /*var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
     deviceInfo.get(function(result) {
       //fetch the device data
@@ -116,6 +116,7 @@ var checkDeviceSetting = function(){
                 cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
                   if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
                     alert("Contacts use is authorized");
+                    callcontact();
                   }else{
                     alert("contact is not authorized");
                   }
@@ -172,7 +173,12 @@ var checkDeviceSetting = function(){
 /*Working*/
   /////
 
-
+  var callcontact = function(){
+    $cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
+      $scope.contacts = allContacts;
+      alert(JSON.stringify($scope.contacts));
+    }
+  }
 
 
   //whatsapp
