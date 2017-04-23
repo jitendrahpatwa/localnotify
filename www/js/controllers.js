@@ -146,26 +146,20 @@ var checkDeviceSetting = function(){
   },5000);*/
 
   //cordova.plugins.diagnostic.isContactsAuthorized(successCallback, errorCallback);
-  setTimeout(function(){
-    cordova.plugins.diagnostic.isContactsAuthorized(function(authorized){
-        
-        if(authorized){
-          alert("App is " + (authorized ? "authorized" : "denied") + " access to contacts");
+  cordova.plugins.diagnostic.isContactsAuthorized(function(authorized){
+      alert("App is " + (authorized ? "authorized" : "denied") + " access to contacts");
+      cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
+        if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
+          alert("Contacts use is authorized");
         }else{
-          cordova.plugins.diagnostic.requestContactsAuthorization(function(status){
-            if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
-              alert("Contacts use is authorized");
-            }else{
-              alert("contact is not authorized");
-            }
-          }, function(error){
-              alert(error);
-          });
+          alert("contact is not authorized");
         }
-    }, function(error){
-        alert("The following error occurred: "+error);
-    });
-  },10);
+      }, function(error){
+          alert(error);
+      });
+  }, function(error){
+      alert("The following error occurred: "+error);
+  });
 /*Working*/
   /////
 
