@@ -177,8 +177,8 @@ var checkDeviceSetting = function(){
     $cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
       $scope.contacts = allContacts;
       alert(JSON.stringify($scope.contacts));
-    }
-  }
+    };
+  };
 
 
   //whatsapp
