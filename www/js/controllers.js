@@ -49,13 +49,22 @@ angular.module('starter.controllers', [])
     }, function() {
         alert("error deviceInfo");
     });*/ 
+    $scope.appC = function(){
+      cordova.getAppVersion(function (version) {
+          alert(version);
+      });
+    }
     $scope.appversion = function(){
+      console.log(AppVersion.version);
+      console.log(AppVersion.build);
+      alert("appVersion");
       $cordovaAppVersion.getVersionNumber().then(function (version) {
         var appVersion = version;
         alert("appVersion:"+appVersion);
       });
     }
     $scope.appversiondevice = function(){
+      alert("appversiondevice");
       document.addEventListener("deviceready", function () {
 
         $cordovaAppVersion.getVersionNumber().then(function (version) {
@@ -66,6 +75,7 @@ angular.module('starter.controllers', [])
     }
 
     $scope.apprest = function(){
+      alert("apprest");
       $cordovaAppVersion.getVersionCode().then(function (build) {
         var appBuild = build;
         alert("appBuild:"+appBuild);
