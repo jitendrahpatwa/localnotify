@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       StatusBar.styleDefault();
     }
     setTimeout(function(){
-        alert("im called");
+        alert("im called in app");
         cordova.getAppVersion(function (version) {
             alert(version);
         });
