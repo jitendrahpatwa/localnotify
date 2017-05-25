@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$cordovaContacts,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform,$timeout,$ionicPlatform) {
+.controller('PlaylistsCtrl', function($scope,$cordovaContacts,$cordovaSocialSharing,$cordovaLocalNotification, $ionicPlatform,$timeout,$ionicPlatform,$cordovaAppVersion) {
    /*var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
     deviceInfo.get(function(result) {
       //fetch the device data
@@ -49,6 +49,43 @@ angular.module('starter.controllers', [])
     }, function() {
         alert("error deviceInfo");
     });*/ 
+    $scope.appversion = function(){
+      $cordovaAppVersion.getVersionNumber().then(function (version) {
+        var appVersion = version;
+        alert("appVersion:"+appVersion);
+      });
+    }
+    $scope.appversiondevice = function(){
+      document.addEventListener("deviceready", function () {
+
+        $cordovaAppVersion.getVersionNumber().then(function (version) {
+          var appVersion = version;
+        alert("appversiondevice:"+appVersion);
+        });
+      }, false);
+    }
+
+    $scope.apprest = function(){
+      $cordovaAppVersion.getVersionCode().then(function (build) {
+        var appBuild = build;
+        alert("appBuild:"+appBuild);
+      });
+
+
+      $cordovaAppVersion.getAppName().then(function (name) {
+        var appName = name;
+        alert("appName:"+appName);
+      });
+
+
+      $cordovaAppVersion.getPackageName().then(function (package) {
+        var appPackage = package;
+        alert("appPackage:"+appPackage);
+      });
+
+
+    };
+
    var callcontact = function(){
     alert("in callcontact");
     
@@ -127,7 +164,7 @@ angular.module('starter.controllers', [])
     }, function(error){
         alert("The following checkAuthorization error occurred: "+error);
     });
-}
+  }
 
 var checkDeviceSetting = function(){
     cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
